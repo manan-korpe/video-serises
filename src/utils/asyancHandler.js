@@ -1,9 +1,11 @@
 const asyancHandler = (reqHandler) => {
-      (req, res, next) => {
+      return (req, res, next) => {
             Promise.resolve(reqHandler(req, res, next))
             .catch((err)=>next(err))
       }
 }
+
+export { asyancHandler }
 
 // const asyancHandler =  (fn) => async (req, res, next) => {
 //       try{
@@ -16,4 +18,3 @@ const asyancHandler = (reqHandler) => {
 //       }
 // }
 
-export { asyancHandler }
